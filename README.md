@@ -2,6 +2,14 @@
 
 String parser for node.js.
 
+# Installation
+
+```
+npm install --save str-parser
+```
+
+# Quickly Start
+
 ```javascript
 var _s = require('str-parser');
 
