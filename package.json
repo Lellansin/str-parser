@@ -1,0 +1,23 @@
+{
+  "name": "str-parser",
+  "version": "0.0.0",
+  "description": "String parser for Javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lellansin/str-parser.git"
+  },
+  "author": "lellansin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lellansin/str-parser/issues"
+  },
+  "homepage": "https://github.com/Lellansin/str-parser#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.3.1"
+  }
+}
