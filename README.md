@@ -13,19 +13,17 @@ npm install --save str-parser
 ```javascript
 var _s = require('str-parser');
 
-console.log(
-  _s('<a href="http://lellansin.com"></a>')
-    .get(/href="([\w\W]+?)"/)); // [ 'href="http://lellansin.com"', 'http://lellansin.com' ]
+var str1 = '<a href="http://lellansin.com"></a>';
+console.log(_s(str1).get(/href="([\w\W]+?)"/));
+// [ 'href="http://lellansin.com"', 'http://lellansin.com' ]
   
 
-console.log(
-  _s('<a></a>')
-    .get(/href="([\w\W]+?)"/)); // [ ]
+var str2 = '<a></a>';
+console.log(_s(str2).get(/href="([\w\W]+?)"/));
+// [ ]
 
-console.log(
-  _s('Alan Bob Cici')
-    .map(/\w+/g, function(value) {
-    return value
-  })); // ['Alan', 'Bob', 'Cici']
+var str3 = 'Alan Bob Cici';
+console.log(_s(str3).map(/\w+/g, (value) => value));
+// ['Alan', 'Bob', 'Cici']
 ```
 
