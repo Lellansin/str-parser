@@ -65,7 +65,43 @@ console.log(
 * rfind
 * lastIndexOf
 
-Cursor method will return str-parser object defaultly
+Cursor method will return str-parser object defaultly.
+
+## Slice
+
+Slice with cursor.
+
+```javascript
+var _s = require('..');
+
+console.log(
+  _s('hello world')
+    .find('w')
+    .sliceTo()
+);
+// world
+
+console.log(
+  _s('hello world')
+    .find('w')
+    .sliceTo(-1)
+);
+// worl
+
+console.log(
+  _s('hello world')
+    .find(' ')
+    .sliceFrom()
+);
+// hello
+
+console.log(
+  _s('hello world')
+    .rfind('o')
+    .sliceFrom(1)
+);
+// ello w
+```
 
 ## Map
 
