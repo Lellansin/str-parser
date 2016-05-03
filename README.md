@@ -43,8 +43,29 @@ console.log(_s(str1).get(/href="([\w\W]+?)"/, 1));
 // 'http://lellansin.com'
 ```
 
-If the api end with 's', it means the result is wraped by str-parser.
+If the api end with 's', it means the result is still wraped by str-parser.
 
+```javascript
+var _s = require('str-parser');
+
+var str1 = '<a href="http://lellansin.com"></a>';
+console.log(
+  _s(str1)
+    .gets(/href="([\w\W]+?)"/, 1)
+    .find('lellansin')
+    .sliceTo(-1)
+);
+// 'lellansin.co'
+```
+
+## Cursor
+
+* find
+* indexOf
+* rfind
+* lastIndexOf
+
+Cursor method will return str-parser object defaultly
 
 ## Map
 
