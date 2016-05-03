@@ -31,6 +31,21 @@ console.log(_s(str3).map(/\w+/g, (value) => value));
 
 # Doc
 
+## Get
+
+Directly *get* the regex match part.
+
+```javascript
+var _s = require('str-parser');
+
+var str1 = '<a href="http://lellansin.com"></a>';
+console.log(_s(str1).get(/href="([\w\W]+?)"/, 1));
+// 'http://lellansin.com'
+```
+
+If the api end with 's', it means the result is wraped by str-parser.
+
+
 ## Map
 
 ```javascript
