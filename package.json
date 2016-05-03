@@ -1,6 +1,6 @@
 {
   "name": "str-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "String parser for Node.js.",
   "main": "index.js",
   "scripts": {
