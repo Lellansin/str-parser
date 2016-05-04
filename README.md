@@ -1,4 +1,4 @@
-# str-parser
+# str-parser [![Build Status](https://travis-ci.org/Lellansin/str-parser.png?branch=master)](https://travis-ci.org/Lellansin/str-parser)
 
 A string parser for node.js. Foucs on string operating, and more simplely regular expression writting.
 
