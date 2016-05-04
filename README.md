@@ -1,9 +1,6 @@
 # str-parser
 
-String parser for node.js.
-
-Foucs on regular expression, for more simple regexp writting.
-
+A string parser for node.js. Foucs on string operating, and more simplely regular expression writting.
 
 ## Installation
 
@@ -31,9 +28,24 @@ console.log(_s(str3).map(/\w+/g, (value) => value));
 
 # Doc
 
-## Get
+* `.get` - directly match.
+* `Cursor` - get index for slice.
+* `Slice` - easily slice by cursor.
+* `.map` - map for regex results.
+* `.reduce` - reduce for regex results.
+* `.filter` - filter for regex results.
+* `.split` - more powerful split method.
+
+## get( expr [, n] )
 
 Directly *get* the regex match part.
+
+*Arguments*
+
+* `expr` - RegExp object.
+* `n` - directly return $n captue value string.
+
+*Example*
 
 ```javascript
 var _s = require('str-parser');
@@ -103,7 +115,14 @@ console.log(
 // ello w
 ```
 
-## Map
+## map( expr[, iteratee ] )
+
+*Arguments*
+
+* `expr` - RegExp object.
+* `iteratee(match, [ $1, $2, ..., ] offset, string)` - A function to apply to each RegExp match string.
+
+*Example*
 
 ```javascript
 var _s = require('str-parser');
@@ -137,7 +156,19 @@ console.log(_s(html).map(/href=\"([\w\W]+?)\"/g, (_, $1) => $1));
 */
 ```
 
-## Reduce
+*Related*
+
+* maps(expr, [iteratee])
+
+
+## reduce( expr[, iteratee ] )
+
+*Arguments*
+
+* `expr` - RegExp object.
+* `iteratee(previousValue, currentValue, currentIndex, matchList)` - A function to apply to reduce each RegExp match string.
+
+*Example*
 
 ```javascript
 var _s = require('..')
@@ -146,7 +177,7 @@ console.log(_s('1a2b3c4d5e').reduce(/[a-z]/g, (a, b) => a + ',' + b))
 // a,b,c,d,e
 ```
 
-$ capture is not support for reduce, pls use map + original array reduce:
+$ capture is not support for .reduce, only for .map, pls use .map + original array reduce:
 
 ```javascript
 var _s = require('..')
@@ -161,3 +192,77 @@ console.log(_s(html)
     .reduce((a, b) => a + ', ' + b))
 // Google, My blog, FaceBook
 ```
+
+*Related*
+
+* reduces(expr, [iteratee])
+
+
+## filter( expr[, iteratee ] )
+
+*Arguments*
+
+* `expr` - RegExp object.
+* `iteratee(match)` - A function to apply to filter each RegExp match string.
+
+*Example*
+
+```javascript
+var _s = require('..')
+
+var str = '12 1 5 6 18 101 22';
+console.log(
+  _s(str).filter(/\d+/g, (num) => num.length == 2)
+)
+// [ '12', '18', '22' ]
+```
+
+*Related*
+
+* filters(expr, [iteratee])
+
+
+## split( expr[, iteratee ] )
+
+*Arguments*
+
+* `expr` - RegExp object.
+* `iteratee(match, separator, offset)` - A function to apply to each RegExp match string. if you return boolean, it's just like .filter for result list; if you return `null`/`undefined`, it means you abbadon the match (won't come in your result list).
+
+*Example*
+
+```javascript
+var _s = require('..')
+
+var str = 'Wed May 04 2016 12:45:03 GMT+0800 (CST)';
+console.log(
+  _s(str).split(/(\ |\:|\+)/g)
+)
+// [ 'Wed', 'May', '04', '2016', '12', '45', '03', 'GMT', '0800', '(CST)' ]
+
+var str = 'Line one texts ...\n' +
+  'Line two\r' +
+  'Line three texts ...\r\n' +
+  'Line four ...\n';
+console.log(
+  _s(str).split(/\r\n|\n|\r/g, (match) => match.toUpperCase())
+)
+/*
+[ 'LINE ONE TEXTS ...',
+  'LINE TWO',
+  'LINE THREE TEXTS ...',
+  'LINE FOUR ...' ]
+*/
+
+var str = '12,123,456,789';
+console.log(
+  _s(str).split(/,\d{3}/g, (match, separator, index) => index)
+)
+// [ 2, 6, 10 ]
+```
+
+*Related*
+
+* splits(expr, [iteratee])
+
+
