@@ -19,7 +19,9 @@ describe('parser', function () {
         'Line three texts ...\r\n' +
         'Line four ...\n'
 
-      var list = _s(str).split(/\r\n|\n|\r/g, (match) => match.toUpperCase())
+      var list = _s(str).split(/\r\n|\n|\r/g, function (match) {
+        return match.toUpperCase() 
+      })
       should.deepEqual(list, [ 'LINE ONE TEXTS ...',
         'LINE TWO',
         'LINE THREE TEXTS ...',
@@ -28,7 +30,9 @@ describe('parser', function () {
     })
 
     it('should get the separator indexs', function (done) {
-      var list = _s('12,123,456,789').split(/,\d{3}/g, (match, separator, index) => index)
+      var list = _s('12,123,456,789').split(/,\d{3}/g, function (match, separator, index) {
+        return index 
+      })
       should.deepEqual(list, [ 2, 6, 10 ])
       done()
     })
