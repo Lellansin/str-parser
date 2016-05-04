@@ -37,4 +37,42 @@ describe('parser', function () {
       done()
     })
   })
+
+  describe('Range', function () {
+    it('#before - should return the string before `world`', function (done) {
+      var str = _s('hello world').before('world')
+      should.equal(str, 'hello ')
+      done()
+    })
+
+    it('#before - should return the string before /\\d/', function (done) {
+      var str = _s('hello 12 world').before(/\d/)
+      should.equal(str, 'hello ')
+      done()
+    })
+
+    it('#after - should return the string after `hello`', function (done) {
+      var str = _s('hello world').after('hello')
+      should.equal(str, ' world')
+      done()
+    })
+
+    it('#after - should return the string after /\\d\\.\\w+/', function (done) {
+      var str = _s('1.hello 2.world').after(/\d\.\w+/)
+      should.equal(str, ' 2.world')
+      done()
+    })
+
+    it('#between - should return the string between `hello ` and ` world`', function (done) {
+      var s = _s('hello test world').between('hello ', ' world')
+      should.equal(s, 'test')
+      done()
+    })
+
+    it('#between - should return the string between /\\w+\\?\\ /, /\\ \\d\\.\\w+/', function (done) {
+      var s = _s('hello? test 2.world').between(/\w+\?\ /, /\ \d\.\w+/)
+      should.equal(s, 'test')
+      done()
+    })
+  })
 })
