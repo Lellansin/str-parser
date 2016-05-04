@@ -48,12 +48,4 @@ describe('parser', function () {
       done()
     })
   })
-
-  it('should convert to money string', function(done) {
-    var str = _s('123456789000')
-      .toMoneyStr()
-      .toString()
-    should.equal(str, '123,456,789,000')
-    done()
-  })
 })
