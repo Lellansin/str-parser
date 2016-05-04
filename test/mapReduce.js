@@ -20,7 +20,7 @@ describe('parser', function () {
   describe('#reduce', function () {
     it('[/\\w+/g] should reduce the words', function(done) {
       var str = _s('hello world test')
-        .reduce(/\w+/g, (a, b) => {
+        .reduce(/\w+/g, function (a, b) {
           return a + ',' + b
         })
       should.equal(str, 'hello,world,test')
@@ -29,7 +29,7 @@ describe('parser', function () {
 
     it('[/\\w+/g] should reserve the words', function(done) {
       var str = _s('hello world test')
-        .reduce(/\w+/g, (a, b) => {
+        .reduce(/\w+/g, function (a, b) {
           return b + ',' + a
         })
       should.equal(str, 'test,world,hello')
@@ -40,7 +40,7 @@ describe('parser', function () {
   describe('#filter', function () {
     it('[/\\w+/g] should filter the words', function(done) {
       var str = '12 1 5 6 18 101 22';
-      var res = _s(str).filter(/\d+/g, (num) => num.length == 2)
+      var res = _s(str).filter(/\d+/g, function (num) { return num.length == 2 })
       should.deepEqual(res, [ '12', '18', '22' ])
       done()
     })
