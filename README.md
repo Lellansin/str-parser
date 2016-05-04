@@ -40,12 +40,12 @@ console.log(_s(str3).map(/\w+/g, (value) => value));
 
 Directly *get* the regex match part.
 
-*Arguments*
+__Arguments__
 
 * `expr` - RegExp object.
 * `n` - directly return $n captue value string.
 
-*Example*
+__Example__
 
 ```javascript
 var _s = require('str-parser');
@@ -117,12 +117,12 @@ console.log(
 
 ## map( expr[, iteratee ] )
 
-*Arguments*
+__Arguments__
 
 * `expr` - RegExp object.
 * `iteratee(match, [ $1, $2, ..., ] offset, string)` - A function to apply to each RegExp match string.
 
-*Example*
+__Example__
 
 ```javascript
 var _s = require('str-parser');
@@ -156,19 +156,21 @@ console.log(_s(html).map(/href=\"([\w\W]+?)\"/g, (_, $1) => $1));
 */
 ```
 
-*Related*
+__Related__
 
 * maps(expr, [iteratee])
+
+---------------------------------------
 
 
 ## reduce( expr[, iteratee ] )
 
-*Arguments*
+__Arguments__
 
 * `expr` - RegExp object.
 * `iteratee(previousValue, currentValue, currentIndex, matchList)` - A function to apply to reduce each RegExp match string.
 
-*Example*
+__Example__
 
 ```javascript
 var _s = require('..')
@@ -193,19 +195,21 @@ console.log(_s(html)
 // Google, My blog, FaceBook
 ```
 
-*Related*
+__Related__
 
 * reduces(expr, [iteratee])
+
+---------------------------------------
 
 
 ## filter( expr[, iteratee ] )
 
-*Arguments*
+__Arguments__
 
 * `expr` - RegExp object.
 * `iteratee(match)` - A function to apply to filter each RegExp match string.
 
-*Example*
+__Example__
 
 ```javascript
 var _s = require('..')
@@ -217,19 +221,21 @@ console.log(
 // [ '12', '18', '22' ]
 ```
 
-*Related*
+__Related__
 
 * filters(expr, [iteratee])
+
+---------------------------------------
 
 
 ## split( expr[, iteratee ] )
 
-*Arguments*
+__Arguments__
 
 * `expr` - RegExp object.
-* `iteratee(match, separator, offset)` - A function to apply to each RegExp match string. if you return boolean, it's just like .filter for result list; if you return `null`/`undefined`, it means you abbadon the match (won't come in your result list).
+* `iteratee(match, separator, offset)` - A function to apply to each RegExp match string. if you return `boolean`, it's just like `.filter` for result list; if you return `null`/`undefined`, it means you abandon current match (won't come in your result list).
 
-*Example*
+__Example__
 
 ```javascript
 var _s = require('..')
@@ -261,8 +267,10 @@ console.log(
 // [ 2, 6, 10 ]
 ```
 
-*Related*
+__Related__
 
 * splits(expr, [iteratee])
+
+---------------------------------------
 
 
